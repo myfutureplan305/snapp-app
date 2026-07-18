@@ -93,11 +93,12 @@ export default function App() {
     }
   }, [loading]);
 
-  useEffect(() => {
+    useEffect(() => {
     loadJSON(HISTORY_KEY, []).then(setHistory);
     loadJSON(SAVED_KEY, []).then(setSaved);
     AsyncStorage.getItem("snappy_onboarded").then(v => setOnboarded(!!v));
   }, []);
+
 
   const completeOnboarding = async () => {
     await AsyncStorage.setItem("snappy_onboarded", "1");
