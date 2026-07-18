@@ -234,8 +234,8 @@ export default function App() {
   // ── Explain modal ─────────────────────────────────────────────────────────
   const ExplainModal = () => (
     <Modal visible={explainModal} animationType="slide" presentationStyle="pageSheet">
-      <LinearGradient colors={["#4B3FC7", "#7B6EF0", "#B8C8F5", "#F0EFF8", "#FAFBFF"]} locations={[0, 0.25, 0.5, 0.75, 1]} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={styles.modalBg}>
-        <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.modalBg}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={() => setExplainModal(false)} style={styles.modalCloseBtn}>
               <Text style={styles.modalCloseText}>✕  Close</Text>
@@ -326,7 +326,7 @@ export default function App() {
             <View style={{ height: 40 }} />
           </ScrollView>
         </SafeAreaView>
-      </LinearGradient>
+      </View>
     </Modal>
   );
 
@@ -614,15 +614,10 @@ export default function App() {
   );
 
   return (
-    <LinearGradient
-      colors={["#4B3FC7", "#7B6EF0", "#B8C8F5", "#F0EFF8", "#FAFBFF"]}
-      locations={[0, 0.25, 0.5, 0.75, 1]}
-      start={{ x: 0.15, y: 0 }}
-      end={{ x: 0.85, y: 1 }}
-      style={styles.root}
-    >
+    <View style={styles.root}>
 
-      <SafeAreaView style={{ flex: 1 }}>
+
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
         <ExplainModal />
         {screen === "home" && <HomeScreen />}
         {screen === "history" && <HistoryScreen />}
@@ -642,12 +637,12 @@ export default function App() {
           ))}
         </GlassCard>
       </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: "#E8E6F8" },
+  root: { flex: 1, backgroundColor: "#C8C8D8" },
 
 
   // Glass base
@@ -781,7 +776,8 @@ const styles = StyleSheet.create({
   emptySubtitle: { fontSize: 14, color: C.textSub, textAlign: "center", paddingHorizontal: 40 },
 
   // Modal
-  modalBg: { flex: 1, backgroundColor: "#E8E6F8" },
+  modalBg: { flex: 1, backgroundColor: "#C8C8D8" },
+
   modalHeader: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: C.border },
   modalCloseBtn: { paddingVertical: 4 },
   modalCloseText: { fontSize: 15, color: C.accent, fontWeight: "600" },
