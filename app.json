@@ -4,17 +4,19 @@
     "slug": "snappy-app",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
+    "userInterfaceStyle": "light",
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#C8C8D8"
+    },
     "ios": {
       "supportsTabletMode": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#C8C8D8"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
