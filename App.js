@@ -930,7 +930,7 @@ const styles = StyleSheet.create({
   paywallSubtitle: { fontSize: 15, color: 'rgba(255,255,255,0.65)', textAlign: 'center', lineHeight: 22, marginBottom: 32, paddingHorizontal: 10 },
   paywallPlans: { width: '100%', gap: 14 },
   planCard: { backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 20, padding: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', position: 'relative', overflow: 'hidden' },
-  planCardPro: { backgroundColor: C.accent, borderColor: C.accent },
+  planCardPro: { backgroundColor: C.accent, borderColor: C.accent, paddingTop: 36 },
   planBestValue: { position: 'absolute', top: 12, right: 12, backgroundColor: '#FFD700', borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3 },
   planBestValueText: { fontSize: 10, fontWeight: '800', color: '#000' },
   planCardLeft: { flex: 1 },
