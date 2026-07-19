@@ -21,6 +21,7 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
 
 
 const { width: SW } = Dimensions.get("window");
@@ -502,7 +503,7 @@ export default function App() {
           ) : (
             <View style={styles.photoEmpty}>
               <View style={styles.photoIconRing}>
-                <Text style={styles.photoIcon}>📷</Text>
+                <Ionicons name="camera" size={32} color={C.accent} />
               </View>
               <Text style={styles.photoEmptyTitle}>Tap to add a photo</Text>
               <Text style={styles.photoEmptySubtitle}>Point at any product to identify it</Text>
@@ -520,10 +521,10 @@ export default function App() {
       {/* Camera / Library row */}
       <View style={styles.captureRow}>
         <GlassCard style={styles.captureBtn} onPress={() => pickPhoto(true)}>
-          <Text style={styles.captureBtnText}>📷  Camera</Text>
+          <Ionicons name="camera-outline" size={18} color={C.text} /><Text style={styles.captureBtnText}>  Camera</Text>
         </GlassCard>
         <GlassCard style={styles.captureBtn} onPress={() => pickPhoto(false)}>
-          <Text style={styles.captureBtnText}>🖼  Library</Text>
+          <Ionicons name="image-outline" size={18} color={C.text} /><Text style={styles.captureBtnText}>  Library</Text>
         </GlassCard>
       </View>
 
@@ -743,12 +744,12 @@ export default function App() {
         {screen === "saved" && <SavedScreen />}
         <GlassCard style={styles.tabBar}>
           {[
-            { id: "home", icon: "🏠", label: "Search" },
-            { id: "history", icon: "🕐", label: "History" },
-            { id: "saved", icon: "♡", label: "Saved" },
+            { id: "home", icon: "home", label: "Search" },
+            { id: "history", icon: "time", label: "History" },
+            { id: "saved", icon: "heart", label: "Saved" },
           ].map(tab => (
             <TouchableOpacity key={tab.id} style={styles.tabItem} onPress={() => setScreen(tab.id)} activeOpacity={0.7}>
-              <Text style={[styles.tabIcon, screen === tab.id && styles.tabIconActive]}>{tab.icon}</Text>
+              <Ionicons name={tab.icon + (screen === tab.id ? "" : "-outline")} size={22} color={screen === tab.id ? C.accent : C.textMuted} />
               <Text style={[styles.tabLabel, screen === tab.id && styles.tabLabelActive]}>{tab.label}</Text>
             </TouchableOpacity>
           ))}
@@ -779,7 +780,7 @@ const styles = StyleSheet.create({
   homeContent: { paddingHorizontal: 16, paddingTop: Platform.OS === "android" ? 48 : 16 },
   homeHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 },
   homeLogo: { fontSize: 28, fontWeight: "800", color: C.text, letterSpacing: -0.5 },
-  homeLogoDot: { color: C.accent, fontSize: 12 },
+  homeLogoDot: { color: C.accent, fontSize: 18 },
   homeTagline: { fontSize: 13, color: C.textSub, marginTop: 2 },
   startOverPill: { backgroundColor: "rgba(255,255,255,0.6)", borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7, borderWidth: 1, borderColor: C.glassBorder },
   startOverText: { fontSize: 13, fontWeight: "600", color: C.textSub },
@@ -797,7 +798,7 @@ const styles = StyleSheet.create({
 
   // Capture
   captureRow: { flexDirection: "row", gap: 10, marginBottom: 10 },
-  captureBtn: { flex: 1, paddingVertical: 11, alignItems: "center" },
+  captureBtn: { flex: 1, paddingVertical: 11, alignItems: "center", flexDirection: "row", justifyContent: "center", gap: 6 },
   captureBtnText: { fontSize: 14, fontWeight: "600", color: C.text },
 
   // Mode toggle
