@@ -99,7 +99,7 @@ export default function App() {
   const [scansUsed, setScansUsed] = useState(0);
   const [plan, setPlan] = useState('free');
   const [showPaywall, setShowPaywall] = useState(false);
-  const [onboarded, setOnboarded] = useState(null);
+  const [onboarded, setOnboarded] = useState(false);
 
 
   // Pulse animation for loading
@@ -743,7 +743,7 @@ export default function App() {
 
   return (
     <View style={styles.root}>
-      {onboarded === null ? null : !onboarded ? (
+      {!onboarded ? (
         <Onboarding onComplete={completeOnboarding} />
       ) : (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
