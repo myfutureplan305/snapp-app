@@ -21,6 +21,7 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Onboarding from "./Onboarding";
 import { Ionicons } from "@expo/vector-icons";
 
 
@@ -98,6 +99,7 @@ export default function App() {
   const [scansUsed, setScansUsed] = useState(0);
   const [plan, setPlan] = useState('free');
   const [showPaywall, setShowPaywall] = useState(false);
+  const [onboarded, setOnboarded] = useState(null);
 
 
   // Pulse animation for loading
@@ -120,10 +122,15 @@ export default function App() {
     loadJSON(SAVED_KEY, []).then(setSaved);
     AsyncStorage.getItem(SCANS_KEY).then(v => setScansUsed(v ? parseInt(v) : 0));
     AsyncStorage.getItem(PLAN_KEY).then(v => setPlan(v || 'free'));
+    AsyncStorage.getItem("snappy_onboarded").then(v => setOnboarded(!!v));
 
   }, []);
 
   const reset = () => {
+    const completeOnboarding = async () => {
+  await AsyncStorage.setItem("snappy_onboarded", "1");
+  setOnboarded(true);
+};
     setPhoto(null); setProduct(null); setResults([]);
     setError(null); setLastMode(null);
     setManualSearch(""); setShowManualSearch(false);
@@ -348,8 +355,12 @@ export default function App() {
 
   const ExplainModal = () => (
     <Modal visible={explainModal} animationType="slide" presentationStyle="pageSheet">
-      <View style={styles.modalBg}>
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
+      return (
+  <View style={styles.root}>
+    {onboarded === null ? null : !onboarded ? (
+      <Onboarding onComplete={completeOnboarding} />
+    ) : (
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={() => setExplainModal(false)} style={styles.modalCloseBtn}>
               <Text style={styles.modalCloseText}>✕  Close</Text>
@@ -755,6 +766,7 @@ export default function App() {
           ))}
         </GlassCard>
       </SafeAreaView>
+      )}
     </View>
   );
 }
