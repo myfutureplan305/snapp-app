@@ -449,7 +449,7 @@ export default function App() {
           </ScrollView>
         </SafeAreaView>
       </View>
-    <Modal>
+              </Modal>
   );
 
   // ── Result card ───────────────────────────────────────────────────────────
