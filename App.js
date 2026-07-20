@@ -356,10 +356,7 @@ export default function App() {
   const ExplainModal = () => (
     <Modal visible={explainModal} animationType="slide" presentationStyle="pageSheet">
       return (
-  <View style={styles.root}>
-    {onboarded === null ? null : !onboarded ? (
-      <Onboarding onComplete={completeOnboarding} />
-    ) : (
+ 
     <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={() => setExplainModal(false)} style={styles.modalCloseBtn}>
@@ -745,11 +742,14 @@ export default function App() {
     </View>
   );
 
-  return (
+return (
     <View style={styles.root}>
+      {onboarded === null ? null : !onboarded ? (
+        <Onboarding onComplete={completeOnboarding} />
+      ) : (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
         <PaywallModal />
-          <ExplainModal />
+        <ExplainModal />
         {screen === "home" && <HomeScreen />}
         {screen === "history" && <HistoryScreen />}
         {screen === "saved" && <SavedScreen />}
@@ -770,7 +770,6 @@ export default function App() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: "#C8C8D8" },
 
