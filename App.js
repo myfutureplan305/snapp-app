@@ -122,15 +122,15 @@ export default function App() {
     loadJSON(SAVED_KEY, []).then(setSaved);
     AsyncStorage.getItem(SCANS_KEY).then(v => setScansUsed(v ? parseInt(v) : 0));
     AsyncStorage.getItem(PLAN_KEY).then(v => setPlan(v || 'free'));
-    AsyncStorage.getItem("snappy_onboarded").then(v => setOnboarded(!!v));
 
   }, []);
 
+  const completeOnboarding = async () => {
+    await AsyncStorage.setItem("snappy_onboarded", "1");
+    setOnboarded(true);
+  };
+
   const reset = () => {
-    const completeOnboarding = async () => {
-  await AsyncStorage.setItem("snappy_onboarded", "1");
-  setOnboarded(true);
-};
     setPhoto(null); setProduct(null); setResults([]);
     setError(null); setLastMode(null);
     setManualSearch(""); setShowManualSearch(false);
@@ -355,9 +355,8 @@ export default function App() {
 
   const ExplainModal = () => (
     <Modal visible={explainModal} animationType="slide" presentationStyle="pageSheet">
-      return (
- 
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
+      <View style={styles.modalBg}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={() => setExplainModal(false)} style={styles.modalCloseBtn}>
               <Text style={styles.modalCloseText}>✕  Close</Text>
@@ -449,7 +448,7 @@ export default function App() {
           </ScrollView>
         </SafeAreaView>
       </View>
-              </Modal>
+    </Modal>
   );
 
   // ── Result card ───────────────────────────────────────────────────────────
@@ -742,14 +741,14 @@ export default function App() {
     </View>
   );
 
-return (
+  return (
     <View style={styles.root}>
       {onboarded === null ? null : !onboarded ? (
         <Onboarding onComplete={completeOnboarding} />
       ) : (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#C8C8D8" }}>
         <PaywallModal />
-        <ExplainModal />
+          <ExplainModal />
         {screen === "home" && <HomeScreen />}
         {screen === "history" && <HistoryScreen />}
         {screen === "saved" && <SavedScreen />}
@@ -770,6 +769,7 @@ return (
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: "#C8C8D8" },
 
