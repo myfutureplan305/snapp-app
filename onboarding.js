@@ -17,7 +17,7 @@ import Purchases from "react-native-purchases";
 const { width: SW, height: SH } = Dimensions.get("window");
 
 // ── RevenueCat API Key ─────────────────────────────────────────────────────
-const RC_API_KEY = "appl_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; // Replace with your real key
+const RC_API_KEY = "appl_eEhmmSQhTGRgdQRKfiuUTavFNqu"; // Replace with your real key
 
 // Product IDs matching App Store Connect
 const PRODUCT_BASIC = "com.snappyapp.app.basic.monthly";
