@@ -24,7 +24,7 @@ const PRODUCT_BASIC = "com.snappyapp.app.basic.monthly";
 const PRODUCT_PRO   = "com.snappyapp.app.pro.monthly";
 
 const PRIVACY_URL = "https://letsgetsnappy.com/privacy";
-const TERMS_URL   = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/";
+const TERMS_URL   = "https://letsgetsnappy.com/terms";
 
 const C = {
   bg: "#0D0F1A",
