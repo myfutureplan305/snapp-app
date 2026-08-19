@@ -20,8 +20,8 @@ const { width: SW, height: SH } = Dimensions.get("window");
 const RC_API_KEY = "appl_eEhmmSQhTGRgdQRKfiuUTavFNqu"; // Replace with your real key
 
 // Product IDs matching App Store Connect
-const PRODUCT_BASIC = "com.snappyapp.app.basic.monthly";
-const PRODUCT_PRO   = "com.snappyapp.app.pro.monthly";
+const PRODUCT_BASIC = "com.snappyapp.app.basic.monthlyv2";
+const PRODUCT_PRO   = "com.snappyapp.app.pro.monthlyv2";
 
 const PRIVACY_URL = "https://letsgetsnappy.com/privacy";
 const TERMS_URL   = "https://letsgetsnappy.com/terms";
